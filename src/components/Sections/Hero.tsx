@@ -1,5 +1,6 @@
 import {ChevronDownIcon} from '@heroicons/react/24/outline';
 import classNames from 'classnames';
+import type {StaticImageData} from 'next/image';
 import Image from 'next/image';
 import {FC, memo} from 'react';
 
@@ -10,8 +11,9 @@ import Socials from '../Socials';
 const Hero: FC = memo(() => {
   const {imageSrc, name, description, actions} = heroData;
 
-  const resolveSrc = (src: string | {src: string}) => (typeof src === 'string' ? src : src.src);
-  const src = imageSrc ? resolveSrc(imageSrc as any) : undefined;
+  const resolveSrc = (src: string | {src: string} | StaticImageData) =>
+    typeof src === 'string' ? src : 'src' in src ? src.src : (src as StaticImageData).src || undefined;
+  const src = imageSrc ? resolveSrc(imageSrc) : undefined;
   const isVideo = src ? /\.(mp4|webm|ogg)(\?|$)/i.test(src) : false;
 
   return (
@@ -19,12 +21,12 @@ const Hero: FC = memo(() => {
       <div className="relative flex h-screen w-full items-center justify-center">
         {isVideo ? (
           <video
-            className="absolute z-0 h-full w-full object-cover"
-            src={src}
             autoPlay
+            className="absolute z-0 h-full w-full object-cover"
             loop
             muted
             playsInline
+            src={src}
           />
         ) : (
           <Image

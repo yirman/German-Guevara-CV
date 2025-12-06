@@ -7,14 +7,14 @@ import {
   SparklesIcon,
 } from '@heroicons/react/24/outline';
 
-import GithubIcon from '../components/Icon/GithubIcon';
-import InstagramIcon from '../components/Icon/InstagramIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
+/*import GithubIcon from '../components/Icon/GithubIcon';
+import InstagramIcon from '../components/Icon/InstagramIcon';
 import StackOverflowIcon from '../components/Icon/StackOverflowIcon';
 import TwitterIcon from '../components/Icon/TwitterIcon';
+*/
 // Use the video placed in `public/` for reliable static serving
 // Move `src/images/header-background4.mp4` -> `public/header-background4.mp4`
-const heroImage = '/header-background4.mp4';
 import porfolioImage1 from '../images/portfolio/portfolio-1.jpg';
 import porfolioImage2 from '../images/portfolio/portfolio-2.jpg';
 import porfolioImage3 from '../images/portfolio/portfolio-3.jpg';
@@ -41,6 +41,7 @@ import {
   TimelineItem,
 } from './dataDef';
 
+const heroImage = '/header-background4.mp4';
 /**
  * Page meta data
  */
